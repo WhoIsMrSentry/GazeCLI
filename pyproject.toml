@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gazecli"
+version = "0.1.0"
+description = "EyeTracker script'lerini tek bir CLI altında çalıştıran paket"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "EyeTracker contributors" }]
+
+dependencies = [
+  "numpy",
+  "opencv-python",
+]
+
+[project.optional-dependencies]
+# Bazı scriptler ekstra paket istiyor; ihtiyacına göre kur.
+head = ["mediapipe", "pyautogui", "keyboard"]
+webcam3d = ["mediapipe", "pyautogui", "keyboard", "scipy"]
+three_d = ["PyOpenGL", "PyQt5"]
+
+[project.scripts]
+gazecli = "gazecli.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
